@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aventador | Experience The Thrill</title>
+    <link rel="stylesheet" href="style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Montserrat:wght@400;600&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <div class="logo">AVENTADOR</div>
+        <nav>
+            <a href="#hero">Home</a>
+            <a href="#about">About</a>
+            <a href="#models">Models</a>
+            <a href="#engine">Information</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <main id="hero">
+        <div class="bg-layer"></div>
+
+        <div class="content-wrapper">
+            <h1 class="main-title">AVENTADOR</h1>
+            <h2 class="subtitle">CHOOSE YOUR AVENTADOR</h2>
+
+            <div class="car-container">
+                <img src="" alt="Lamborghini Aventador" id="car-image" class="car-img active entry-anim">
+            </div>
+
+            <div class="controls">
+                <button class="color-btn active" data-color="black" data-index="01">01</button>
+                <button class="color-btn" data-color="orange" data-index="02">02</button>
+                <button class="color-btn" data-color="white" data-index="03">03</button>
+                <button class="color-btn" data-color="yellow" data-index="04">04</button>
+            </div>
+
+            <div class="cta-container">
+                <button class="start-btn">
+                    START
+                    <span class="arrow-down">⌄</span>
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <section id="about">
+        <div class="about-content">
+            <div class="text-column">
+                <h2>DESIGNED TO<br>GO BEYOND<br>PERFORMANCE</h2>
+                <p>
+                    Revolutionary thinking is at the heart of every Lamborghini car idea,
+                    whether it is the design inspired by the aerospace industry or the
+                    technologies applied to natural aspiration.
+                </p>
+                <button class="details-btn">DETAILS <span class="arrow">></span></button>
+            </div>
+            <div class="media-column">
+                <div class="video-frame">
+                    <video autoplay loop muted playsinline>
+                        <source src="assets/video.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="models">
+        <div class="ultimae-showcase">
+            <div class="bg-watermark">780-4</div>
+
+            <div class="showcase-header">
+                <span class="sub-header">CHOOSE YOUR AVENTADOR</span>
+                <h2>AVENTADOR LP<br>780-4 ULTIMAE</h2>
+            </div>
+
+            <div class="showcase-car">
+                <button class="model-arrow arrow-left" id="prev-model">&lt;</button>
+                <img src="assets/ultimae_side.png" alt="Aventador Ultimae Side Profile" id="model-image">
+                <button class="model-arrow arrow-right" id="next-model">&gt;</button>
+            </div>
+
+            <div class="showcase-specs">
+                <div class="spec-item">
+                    <span class="label">POWER (KW)</span>
+                    <span class="value">780 CV <span class="small">(574 kW)</span></span>
+                    <span class="sub-value">8.500 rpm</span>
+                </div>
+                <div class="spec-item">
+                    <span class="label">MAX. SPEED</span>
+                    <span class="value">355 km/h</span>
+                </div>
+                <div class="spec-item">
+                    <span class="label">0-100 KM/H</span>
+                    <span class="value">2.8 - 2.9s</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="engine">
+        <div class="info-content">
+            <div class="info-text">
+                <h2>ENGINEERING<br>MASTERPIECE</h2>
+                <p class="info-desc">
+                    The V12 engine, capable of generating 770 CV, is the beating heart that drives the Aventador beyond
+                    all limits.
+                </p>
+
+                <div class="specs-grid">
+                    <div class="spec-card">
+                        <span class="spec-value">770</span>
+                        <span class="spec-label">CV @ 8500 rpm</span>
+                    </div>
+                    <div class="spec-card">
+                        <span class="spec-value">350</span>
+                        <span class="spec-label">Km/h Max Speed</span>
+                    </div>
+                    <div class="spec-card">
+                        <span class="spec-value">2.8</span>
+                        <span class="spec-label">Sec 0-100 km/h</span>
+                    </div>
+                </div>
+            </div>
+            <div class="info-visual">
+                <img src="assets/engine_tech.png" alt="V12 Engine Schematic">
+                <div class="glow-effect"></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="contact-overlay"></div>
+        <div class="contact-content">
+            <h2>JOIN THE LEGACY</h2>
+            <form class="contact-form">
+                <div class="input-group">
+                    <input type="text" placeholder="NAME" required>
+                    <span class="bar"></span>
+                </div>
+                <div class="input-group">
+                    <input type="email" placeholder="EMAIL" required>
+                    <span class="bar"></span>
+                </div>
+                <div class="input-group">
+                    <textarea placeholder="MESSAGE" rows="1"></textarea>
+                    <span class="bar"></span>
+                </div>
+                <button type="submit" class="submit-btn">SEND REQUEST</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">AVENTADOR</div>
+            <div class="social-links">
+                <a href="#">INSTAGRAM</a>
+                <a href="#">TWITTER</a>
+                <a href="#">YOUTUBE</a>
+            </div>
+            <div class="copyright">
+                &copy; 2024 AUTOMOBILI LAMBORGHINI S.P.A.
+            </div>
+        </div>
+    </footer>
+
+    <div id="scrollTopBtn" class="scroll-top-btn">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M18 15L12 9L6 15" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" />
+        </svg>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

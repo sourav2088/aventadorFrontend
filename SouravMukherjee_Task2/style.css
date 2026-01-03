@@ -1,0 +1,1044 @@
+:root {
+    --text-color: #ffffff;
+    --accent-color: #ffffff;
+    --nav-space: 80px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--text-color);
+    overflow-x: hidden;
+    background-color: #1a1a1a;
+}
+
+/* Smooth Scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Background */
+#hero {
+    position: relative;
+    width: 100%;
+    /* Fix horizontal scroll */
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.bg-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('assets/desert_bg.png');
+    /* Placeholder path, will update */
+    background-size: cover;
+    background-position: center;
+    z-index: 1;
+}
+
+/* Header */
+/* Header */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    /* Ensure it stays on top of everything */
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 80%);
+    backdrop-filter: none;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+header.scrolled {
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.logo {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--text-color);
+    margin-left: 40px;
+    font-size: 0.9rem;
+    position: relative;
+    opacity: 1;
+    /* Max visibility */
+    font-weight: 600;
+    /* Thicker text for contrast */
+    transition: all 0.3s ease;
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--text-color);
+    transition: width 0.3s ease;
+}
+
+nav a:hover {
+    opacity: 1;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    /* Glow effect */
+}
+
+nav a:hover::after,
+nav a.active::after {
+    width: 100%;
+    /* Slide underline on hover & active */
+}
+
+/* Main Content */
+.content-wrapper {
+    position: relative;
+    z-index: 5;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.subtitle {
+    font-size: 1rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: -20px;
+    font-weight: 600;
+    z-index: 3;
+}
+
+/* Massive Title Behind Car */
+.main-title {
+    font-family: 'Oswald', sans-serif;
+    font-size: 12vw;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: rgba(0, 0, 0, 0.4);
+    /* Darkened for visibility */
+    z-index: 2;
+    /* Behind the car */
+    line-height: 1;
+    margin-top: 20px;
+}
+
+/* Car Container */
+.car-container {
+    position: relative;
+    width: 60%;
+    max-width: 700px;
+    height: auto;
+    z-index: 4;
+    /* Above title */
+    margin-top: -6px;
+    /* Increased gap */
+    perspective: 1000px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.car-img {
+    width: 95%;
+    height: auto;
+    display: block;
+    padding: 2px;
+    filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.5));
+    transition: transform 0.6s cubic-bezier(0.55, 0.055, 0.675, 0.19), opacity 0.6s ease;
+    transform: translateX(0);
+}
+
+.car-img.drive-out {
+    transform: translateX(-150%) skewX(-10deg);
+    opacity: 0;
+}
+
+.car-img.prepare-enter {
+    transform: translateX(150%);
+    opacity: 0;
+    transition: none;
+}
+
+.car-img.drive-in {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+/* Controls (01 02 03 04) */
+.controls {
+    display: flex;
+    gap: 40px;
+    margin-top: -50px;
+    z-index: 10;
+    position: relative;
+    padding: 4px 24px;
+    border-radius: 50px;
+    background: rgba(0, 0, 0, 0.4);
+    /* Thicker dark background */
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.color-btn {
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.6);
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    cursor: pointer;
+    position: relative;
+    padding: 10px;
+    transition: all 0.3s;
+}
+
+.color-btn.active,
+.color-btn:hover {
+    color: #fff;
+    transform: scale(1.1);
+}
+
+.color-btn::before {
+    content: attr(data-index);
+}
+
+/* Start Button */
+.cta-container {
+    margin-top: 5px;
+    z-index: 6;
+}
+
+.start-btn {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.05);
+    color: white;
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+}
+
+.start-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: #fff;
+    transform: translateY(-5px);
+}
+
+.arrow-down {
+    font-size: 1.5rem;
+    margin-top: -10px;
+}
+
+/* Entry Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes carSlideIn {
+    from {
+        opacity: 0;
+        transform: translateX(100vw);
+        /* Start from right */
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Initial States & Delays */
+header {
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out 0.2s forwards;
+}
+
+.main-title {
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out 0.4s forwards;
+}
+
+.subtitle {
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out 0.5s forwards;
+}
+
+.car-container {
+    opacity: 1;
+    /* Container visible, image handles animation */
+}
+
+.car-img {
+    width: 95%;
+    height: auto;
+    display: block;
+    padding: 2px;
+    filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.5));
+    transition: transform 0.6s cubic-bezier(0.55, 0.055, 0.675, 0.19), opacity 0.6s ease;
+    transform: translateX(0);
+    opacity: 1;
+    /* Base state is visible */
+}
+
+/* Class for initial entry only */
+.car-img.entry-anim {
+    animation: carSlideIn 1s cubic-bezier(0.55, 0.055, 0.675, 0.19) 0.6s backwards;
+    /* backwards ensures opacity 0 start */
+}
+
+/* We need to ensure the car's internal transform doesn't override this. 
+   Actually, .car-container has no transform logic, only .car-img does. 
+   So animating .car-container is safe! */
+
+.controls {
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out 0.8s forwards;
+}
+
+.cta-container {
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out 1s forwards;
+}
+
+/* About Section */
+#about {
+    width: 100%;
+    height: 100vh;
+    /* Force full viewport height */
+    background-color: #e67e22;
+    /* More vibrant orange */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 5;
+    overflow: hidden;
+    /* Clean edges */
+}
+
+.about-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    max-width: 1600px;
+    /* Allow it to go wider */
+    height: 80%;
+}
+
+.text-column {
+    flex: 1;
+    color: white;
+    padding-right: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.text-column h2 {
+    font-family: 'Oswald', sans-serif;
+    /* Switch to Oswald for that extra bold impact */
+    font-size: 6vw;
+    /* Massive responsive text */
+    font-weight: 700;
+    line-height: 0.9;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    letter-spacing: -2px;
+}
+
+.text-column p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 50px;
+    opacity: 0.9;
+    max-width: 600px;
+    font-weight: 500;
+}
+
+.details-btn {
+    padding: 18px 50px;
+    background: transparent;
+    border: 2px solid white;
+    color: white;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 500;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    width: fit-content;
+    position: relative;
+    overflow: hidden;
+}
+
+.details-btn:hover {
+    background: white;
+    color: #e67e22;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Video Column */
+.media-column {
+    flex: 1.4;
+    /* Give video more space */
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.video-frame {
+    width: 100%;
+    height: 85%;
+    /* Tall vertical presence */
+    transform: skewX(-12deg);
+    box-shadow: 30px 30px 70px rgba(0, 0, 0, 0.4);
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.video-frame video {
+    width: 140%;
+    /* Oversize to cover skew */
+    height: 100%;
+    object-fit: cover;
+    transform: skewX(12deg) translateX(-15%);
+    /* Counter-skew and center */
+}
+
+/* Smooth Scrolling */
+/* Models Section (Ultimae Showcase) */
+#models {
+    width: 100%;
+    height: 100vh;
+    background-color: #ffffff;
+    /* Pure white background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 5;
+    overflow: hidden;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.ultimae-showcase {
+    width: 100%;
+    max-width: 1400px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 60px 20px;
+    position: relative;
+}
+
+/* Faded Background Text */
+.bg-watermark {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* Perfectly centered */
+    font-family: 'Oswald', sans-serif;
+    font-size: 25vw;
+    /* Massive */
+    font-weight: 700;
+    color: #f2f2f2;
+    /* Very light grey */
+    z-index: 1;
+    line-height: 1;
+    pointer-events: none;
+    user-select: none;
+    white-space: nowrap;
+    /* Prevent wrapping */
+}
+
+/* Header */
+.showcase-header {
+    text-align: center;
+    z-index: 2;
+    margin-top: 20px;
+}
+
+.sub-header {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #666;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 15px;
+}
+
+.showcase-header h2 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: #000;
+    line-height: 1.1;
+    text-transform: uppercase;
+}
+
+/* Side Profile Car */
+.showcase-car {
+    flex: 1;
+    /* Take up available space */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    z-index: 3;
+    position: relative;
+}
+
+.showcase-car img {
+    width: 80%;
+    /* Slightly smaller to fit arrows */
+    max-width: 900px;
+    height: auto;
+    filter: drop-shadow(0 30px 40px rgba(0, 0, 0, 0.25));
+    /* Realistic shadow */
+    transition: transform 0.5s ease, opacity 0.3s ease;
+    cursor: pointer;
+}
+
+/* Arrows */
+.model-arrow {
+    background: none;
+    border: none;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2rem;
+    color: #ccc;
+    cursor: pointer;
+    padding: 10px 20px;
+    transition: all 0.3s ease;
+    z-index: 10;
+    user-select: none;
+}
+
+.model-arrow:hover {
+    color: #000;
+    transform: scale(1.2);
+}
+
+.arrow-left {
+    margin-right: -50px;
+    /* Pull closer to car */
+}
+
+.arrow-right {
+    margin-left: -50px;
+    /* Pull closer to car */
+}
+
+.showcase-car img:hover {
+    transform: scale(1.05);
+    /* Subtle zoom interaction */
+}
+
+/* Simple Hover Animation for "Interaction" */
+.showcase-car:hover~.bg-watermark {
+    color: #eeeeee;
+    /* Slight change */
+}
+
+/* Footer Specs */
+.showcase-specs {
+    display: flex;
+    justify-content: center;
+    gap: 80px;
+    width: 100%;
+    z-index: 2;
+    margin-bottom: 20px;
+}
+
+.spec-item {
+    text-align: center;
+}
+
+.spec-item .label {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #000;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    letter-spacing: 1px;
+}
+
+.spec-item .value {
+    display: block;
+    font-size: 1.1rem;
+    color: #666;
+    font-weight: 500;
+}
+
+.spec-item .value .small {
+    font-size: 0.9rem;
+    color: #999;
+}
+
+.spec-item .sub-value {
+    display: block;
+    font-size: 0.9rem;
+    color: #999;
+    margin-top: 4px;
+}
+
+/* Information Section */
+#engine {
+    width: 100%;
+    height: 100vh;
+    background-color: #0a0a0a;
+    /* Deep dark background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 5;
+    overflow: hidden;
+}
+
+.info-content {
+    display: flex;
+    width: 85%;
+    max-width: 1600px;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.info-text {
+    flex: 1;
+    color: white;
+    padding-right: 60px;
+    z-index: 2;
+}
+
+.info-text h2 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 5vw;
+    line-height: 1;
+    margin-bottom: 30px;
+    background: linear-gradient(45deg, #fff, #999);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.info-desc {
+    font-size: 1.1rem;
+    color: #ccc;
+    margin-bottom: 50px;
+    max-width: 500px;
+    line-height: 1.6;
+}
+
+.specs-grid {
+    display: flex;
+    gap: 30px;
+}
+
+.spec-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 20px 30px;
+    border-radius: 4px;
+    backdrop-filter: blur(10px);
+    display: flex;
+    flex-direction: column;
+    min-width: 160px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.spec-card:hover {
+    background: rgba(230, 126, 34, 0.1);
+    /* Orange tint on hover */
+    border-color: #e67e22;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(230, 126, 34, 0.2);
+}
+
+.spec-value {
+    font-family: 'Oswald', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #e67e22;
+    /* Signature orange */
+    margin-bottom: 5px;
+}
+
+.spec-label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.8rem;
+    color: #aaa;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Visual Column */
+.info-visual {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    height: 70vh;
+}
+
+.info-visual img {
+    height: 100%;
+    width: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 0 50px rgba(230, 126, 34, 0.3));
+    /* Orange glow */
+    animation: engineFloat 4s ease-in-out infinite;
+}
+
+@keyframes engineFloat {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+/* Animations for Ultimae Showcase */
+#models .bg-watermark,
+#models .showcase-car,
+#models .showcase-specs,
+#models .showcase-header {
+    opacity: 0;
+    /* Hidden initially */
+    transition: opacity 0.5s ease;
+}
+
+#models.in-view .bg-watermark {
+    animation: watermarkDown 1s ease-out forwards;
+}
+
+#models.in-view .showcase-car {
+    animation: fadeInDown 1s ease-out 0.2s forwards;
+}
+
+#models.in-view .showcase-header {
+    animation: fadeInDown 1s ease-out 0.1s forwards;
+}
+
+#models.in-view .showcase-specs {
+    animation: fadeInUp 1s ease-out 0.4s forwards;
+}
+
+@keyframes watermarkDown {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -70%);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Contact Section */
+/* Contact Section (Redesigned) */
+#contact {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    background-image: url('assets/contact_bg.png');
+    background-size: cover;
+    background-position: center bottom;
+    /* Anchor to bottom for car visibility */
+    background-attachment: scroll;
+    /* Removing fixed for better mobile perf & framing */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 5;
+}
+
+.contact-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.8));
+    /* Vignette */
+    z-index: 1;
+}
+
+.contact-content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 500px;
+    padding: 60px 40px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.03);
+    /* Subtle Glass */
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 2px;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+}
+
+.contact-content h2 {
+    font-family: 'Montserrat', sans-serif;
+    /* Clean Luxury */
+    font-size: 0.9rem;
+    color: #e74c3c;
+    /* Red Accent */
+    margin-bottom: 40px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.input-group {
+    position: relative;
+    width: 100%;
+}
+
+.input-group input,
+.input-group textarea {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    /* Darker inputs */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 15px 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.9rem;
+    color: #fff;
+    outline: none;
+    transition: all 0.3s ease;
+    border-radius: 0;
+    /* Sharp edges */
+}
+
+.input-group textarea {
+    resize: none;
+    height: 120px;
+}
+
+.input-group input::placeholder,
+.input-group textarea::placeholder {
+    color: rgba(255, 255, 255, 0.3);
+    letter-spacing: 2px;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+}
+
+.input-group input:focus,
+.input-group textarea:focus {
+    border-color: #e74c3c;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.submit-btn {
+    background: #fff;
+    border: none;
+    color: #000;
+    padding: 18px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.submit-btn:hover {
+    background: #e74c3c;
+    color: white;
+    box-shadow: 0 10px 30px rgba(231, 76, 60, 0.3);
+}
+
+/* Footer */
+footer {
+    background-color: #000;
+    color: #fff;
+    padding: 50px 20px;
+    text-align: center;
+    position: relative;
+    z-index: 6;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.footer-logo {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+    margin-bottom: 30px;
+    font-weight: 700;
+    color: #333;
+    /* Stealth look */
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-bottom: 30px;
+}
+
+.social-links a {
+    color: #666;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+    transition: color 0.3s ease;
+    text-transform: uppercase;
+}
+
+.social-links a:hover {
+    color: #e74c3c;
+}
+
+.copyright {
+    color: #333;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.6rem;
+    letter-spacing: 1px;
+}
+
+/* Scroll to Top Button (Minimalist) */
+.scroll-top-btn {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    width: 45px;
+    height: 45px;
+    background: rgba(0, 0, 0, 0.6);
+    /* Darker glass for contrast */
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    /* Slightly rounded square */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 1000;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    backdrop-filter: blur(10px);
+    pointer-events: none;
+}
+
+.scroll-top-btn.visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.scroll-top-btn:hover {
+    background: #fff;
+    color: #000;
+    border-color: #fff;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.scroll-top-btn svg {
+    width: 20px;
+    height: 20px;
+    transition: transform 0.3s ease;
+}
+
+.scroll-top-btn:hover svg {
+    transform: translateY(-2px);
+}
+
+.scroll-top-btn.launching {
+    transform: translateY(-100vh) scaleY(3);
+    /* Shoot up and stretch */
+    opacity: 0;
+    filter: blur(5px);
+    /* Motion blur */
+    transition: transform 0.6s cubic-bezier(0.5, 0, 0, 1), opacity 0.6s ease, filter 0.6s ease;
+    pointer-events: none;
+}
